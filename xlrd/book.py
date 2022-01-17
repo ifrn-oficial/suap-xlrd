@@ -71,7 +71,7 @@ def open_workbook_xls(filename=None,
     encoding_override=None,
     formatting_info=False, on_demand=False, ragged_rows=False,
     ):
-    t0 = time.clock()
+    t0 = time.process_time()
     if TOGGLE_GC:
         orig_gc_enabled = gc.isenabled()
         if orig_gc_enabled:
@@ -86,7 +86,7 @@ def open_workbook_xls(filename=None,
             on_demand=on_demand,
             ragged_rows=ragged_rows,
             )
-        t1 = time.clock()
+        t1 = time.process_time()
         bk.load_time_stage_1 = t1 - t0
         biff_version = bk.getbof(XL_WORKBOOK_GLOBALS)
         if not biff_version:
@@ -127,7 +127,7 @@ def open_workbook_xls(filename=None,
         if TOGGLE_GC:
             if orig_gc_enabled:
                 gc.enable()
-        t2 = time.clock()
+        t2 = time.process_time()
         bk.load_time_stage_2 = t2 - t1
     except:
         bk.release_resources()
