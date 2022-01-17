@@ -3,7 +3,7 @@ from setuptools import setup
 from xlrd.info import __VERSION__
 
 setup(
-    name = 'xlrd',
+    name = 'suap-xlrd',
     version = __VERSION__,
     author = 'John Machin',
     author_email = 'sjmachin@lexicon.net',
